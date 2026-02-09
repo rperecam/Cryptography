@@ -74,12 +74,12 @@ def demo_basic_usage() -> None:
     print("="*70 + "\n")
     
     # Crear carpeta de resultados
-    results_dir = "stego-results"
+    results_dir = "../stego-results"
     os.makedirs(results_dir, exist_ok=True)
     print(f"[+] Carpeta de resultados: {results_dir}/\n")
 
     # Leer mensaje desde archivo
-    message_file = "files/secret_document_ex.txt"
+    message_file = "../files/secret_document_ex.txt"
     if not os.path.exists(message_file):
         print(f"[✗] Error: No se encuentra el archivo '{message_file}'")
         print(f"    Por favor, crea este archivo en el directorio actual con tu mensaje secreto.")
