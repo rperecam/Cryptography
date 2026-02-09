@@ -1,0 +1,53 @@
+======================================================================
+INFORME COMPLETO - SISTEMA DE ESTEGANOGRAFÍA LSB
+======================================================================
+
+Fecha: 2026-02-09 17:38:05
+Archivo de mensaje: files/secret_document_ex.txt
+Contraseña: **
+
+ARCHIVOS GENERADOS:
+  - Imagen cover: cover_image.png
+  - Imagen stego: stego_image.png
+  - Mensaje recuperado: mensaje_recuperado.txt
+  - Mapa diferencias: diferencia_visual.png
+
+ESTADÍSTICAS DE OCULTACIÓN:
+  - Tamaño mensaje original: 171,831 bytes
+  - Tamaño payload cifrado: 171,883 bytes
+  - Overhead cifrado: 52 bytes
+  - Bits utilizados: 1,375,064 / 1,440,000
+  - Capacidad usada: 95.49%
+  - Posiciones aleatorias: 1,375,064
+
+ANÁLISIS VISUAL:
+  - Diferencia máxima: 1
+  - Diferencia promedio: 0.477348
+  - Píxeles modificados: 687,381 de 1,440,000
+  - Porcentaje modificado: 47.7348%
+
+MÉTRICAS DE CALIDAD:
+  - MSE: 0.477348
+  - PSNR: 51.34 dB
+
+VERIFICACIÓN:
+  - Mensaje recuperado correctamente: SÍ
+  - Bytes recuperados: 171,831
+  - Integridad: 100%
+
+ANÁLISIS POR CANAL:
+  Canal Rojo:
+    - Cover LSB=1: 240,000/480,000 (50.00%)
+    - Stego LSB=1: 239,825/480,000 (49.96%)
+    - Cambio: 175 píxeles
+
+  Canal Verde:
+    - Cover LSB=1: 120,000/480,000 (25.00%)
+    - Stego LSB=1: 234,435/480,000 (48.84%)
+    - Cambio: 114,435 píxeles
+
+  Canal Azul:
+    - Cover LSB=1: 240,800/480,000 (50.17%)
+    - Stego LSB=1: 239,565/480,000 (49.91%)
+    - Cambio: 1,235 píxeles
+

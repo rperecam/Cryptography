@@ -1,0 +1,15 @@
+# --- Ignorar entorno virtual ---
+venv/
+.venv/
+env/
+
+# --- Ignorar configuraciones del IDE (DataSpell/PyCharm) ---
+.idea/
+
+# --- Ignorar carpetas de datos y resultados ---
+lsb/dataset_images/
+lsb/scripts/resultados_stego/
+
+# --- Ignorar archivos compilados de Python ---
+__pycache__/
+*.pyc
