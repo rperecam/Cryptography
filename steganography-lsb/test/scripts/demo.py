@@ -67,14 +67,14 @@ def demo_basic_usage() -> None:
     3. Crea imagen cover y oculta el mensaje cifrado
     4. Extrae y verifica el mensaje
     5. Genera análisis completo (visual, estadístico, capacidad)
-    6. Guarda todos los resultados en resultados_stego/
+    6. Guarda todos los resultados en stego-results/
     """
     print("="*70)
     print("  SISTEMA DE ESTEGANOGRAFÍA - Mensaje Personalizado")
     print("="*70 + "\n")
     
     # Crear carpeta de resultados
-    results_dir = "resultados_stego"
+    results_dir = "stego-results"
     os.makedirs(results_dir, exist_ok=True)
     print(f"[+] Carpeta de resultados: {results_dir}/\n")
 
@@ -298,7 +298,7 @@ def main():
         demo_basic_usage()
 
         print("\n[✓] Proceso completado exitosamente!")
-        print("    Revisa la carpeta 'resultados_stego/' para ver todos los archivos generados.\n")
+        print("    Revisa la carpeta 'stego-results/' para ver todos los archivos generados.\n")
 
     except KeyboardInterrupt:
         print("\n\n[!] Proceso interrumpido por el usuario.")

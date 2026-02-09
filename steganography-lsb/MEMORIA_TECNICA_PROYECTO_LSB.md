@@ -1181,7 +1181,7 @@ python demo.py
 Contraseña: TuContraseñaSegura123
 
 # Verificar resultados
-cd resultados_stego
+cd stego-results
 dir
 ```
 
@@ -1189,10 +1189,10 @@ dir
 
 ```bash
 # Windows PowerShell
-fc.exe /b secret_document.txt resultados_stego\mensaje_recuperado.txt
+fc.exe /b secret_document.txt stego-results\mensaje_recuperado.txt
 
 # Linux/Mac
-diff secret_document.txt resultados_stego/mensaje_recuperado.txt
+diff secret_document.txt stego-results/mensaje_recuperado.txt
 ```
 
 #### Uso Programático

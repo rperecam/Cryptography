@@ -3,12 +3,12 @@ venv/
 .venv/
 env/
 
-# --- Ignorar configuraciones del IDE (DataSpell/PyCharm) ---
+# --- Ignorar configuraciones del IDE (DataSpell) ---
 .idea/
 
 # --- Ignorar carpetas de datos y resultados ---
-lsb/dataset_images/
-lsb/scripts/resultados_stego/
+steganography-lsb/dataset_images/
+steganography-lsb/scripts/resultados_stego/
 
 # --- Ignorar archivos compilados de Python ---
 __pycache__/
