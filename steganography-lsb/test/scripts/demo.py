@@ -140,7 +140,7 @@ def demo_basic_usage() -> None:
     recovered_text = recovered_message.decode('utf-8', errors='replace')
 
     # Guardar mensaje recuperado
-    recovered_path = os.path.join(results_dir, "mensaje_recuperado.txt")
+    recovered_path = os.path.join(results_dir, "recovered-message.txt")
     with open(recovered_path, "wb") as f:
         f.write(recovered_message)
 
@@ -169,7 +169,7 @@ def demo_basic_usage() -> None:
     # Crear imagen de diferencia (amplificada para visualización)
     diff_amplified = np.clip(diff * 50, 0, 255).astype(np.uint8)
     diff_img = Image.fromarray(diff_amplified)
-    diff_path = os.path.join(results_dir, "diferencia_visual.png")
+    diff_path = os.path.join(results_dir, "visual_diff.png")
     diff_img.save(diff_path)
     print(f"    - Mapa de diferencias guardado: {diff_path}")
     print()
@@ -217,7 +217,7 @@ def demo_basic_usage() -> None:
     print()
 
     # Guardar informe completo
-    report_path = os.path.join(results_dir, "informe_completo.txt")
+    report_path = os.path.join(results_dir, "report.txt")
     with open(report_path, "w", encoding='utf-8') as f:
         f.write("=" * 70 + "\n")
         f.write("INFORME COMPLETO - SISTEMA DE ESTEGANOGRAFÍA LSB\n")
@@ -230,8 +230,8 @@ def demo_basic_usage() -> None:
         f.write("ARCHIVOS GENERADOS:\n")
         f.write(f"  - Imagen cover: cover_image.png\n")
         f.write(f"  - Imagen stego: stego_image.png\n")
-        f.write(f"  - Mensaje recuperado: mensaje_recuperado.txt\n")
-        f.write(f"  - Mapa diferencias: diferencia_visual.png\n\n")
+        f.write(f"  - Mensaje recuperado: recovered-message.txt\n")
+        f.write(f"  - Mapa diferencias: visual_diff.png\n\n")
 
         f.write("ESTADÍSTICAS DE OCULTACIÓN:\n")
         f.write(f"  - Tamaño mensaje original: {len(secret_message_bytes):,} bytes\n")
@@ -278,9 +278,9 @@ def demo_basic_usage() -> None:
     print(f"📁 {results_dir}/")
     print(f"  📄 cover_image.png          - Imagen original")
     print(f"  📄 stego_image.png          - Imagen con mensaje oculto")
-    print(f"  📄 mensaje_recuperado.txt   - Mensaje extraído")
-    print(f"  📄 diferencia_visual.png    - Mapa de diferencias")
-    print(f"  📄 informe_completo.txt     - Análisis detallado")
+    print(f"  📄 recovered-message.txt   - Mensaje extraído")
+    print(f"  📄 visual_diff.png    - Mapa de diferencias")
+    print(f"  📄 report.txt     - Análisis detallado")
     print("="*70 + "\n")
 
 

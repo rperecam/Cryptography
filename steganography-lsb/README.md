@@ -188,9 +188,10 @@ posiciones = rng.permutation(range(capacidad_total))
 ### 4.1 Estructura del Proyecto
 
 ```
-Criptografia/lsb/
+Cryptography/lsb/
 ├── LSB_Lab_Notebook.ipynb          # Jupyter notebook completo
 ├── requirements.txt                 # Dependencias Python
+├── README.md                        # Este documento
 ├── dataset_images/                  # Dataset generado (100 imágenes)
 │   ├── image_000.png
 │   ├── image_001.png
@@ -199,15 +200,15 @@ Criptografia/lsb/
     ├── scripts/
     │   ├── demo.py                  # Script de demostración principal
     │   ├── stego_system.py          # Motor de esteganografía
-    │   ├── files/
-    │   │   ├── secret_document.txt       # Mensaje de prueba
-    │   │   └── secret_document_ex.txt    # Mensaje extenso (171 KB)
-    │   └── resultados_stego/        # Resultados de pruebas
-    │       ├── cover_image.png           # Imagen original
-    │       ├── stego_image.png           # Imagen con mensaje
-    │       ├── diferencia_visual.png     # Mapa de diferencias
-    │       ├── mensaje_recuperado.txt    # Mensaje extraído
-    │       ├── informe_completo.txt      # Análisis detallado
+    ├── files/
+    │   ├── secret_document.txt       # Mensaje de prueba
+    │   └── secret_document_ex.txt    # Mensaje extenso (171 KB)
+    └── resultados_stego/        # Resultados de pruebas
+        ├── cover_image.png           # Imagen original
+        ├── stego_image.png           # Imagen con mensaje
+        ├── diferencia_visual.png     # Mapa de diferencias
+        ├── mensaje_recuperado.txt    # Mensaje extraído
+        └── informe_completo.txt      # Análisis detallado
 ```
 
 ### 4.2 Componentes Principales
@@ -578,7 +579,7 @@ Contraseña: "**" (oculta por seguridad)
 
 ```python
 original = open("secret_document.txt", "rb").read()
-recuperado = open("mensaje_recuperado.txt", "rb").read()
+recuperado = open("recovered-message.txt", "rb").read()
 
 assert original == recuperado  # ✓ PASS
 ```
@@ -1192,7 +1193,7 @@ dir
 fc.exe /b secret_document.txt stego-results\mensaje_recuperado.txt
 
 # Linux/Mac
-diff secret_document.txt stego-results/mensaje_recuperado.txt
+diff secret_document.txt stego-results/recovered-message.txt
 ```
 
 #### Uso Programático
