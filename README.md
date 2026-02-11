@@ -12,18 +12,15 @@ El contenido se organiza por carpetas, normalmente una por práctica o tema. Des
 
 ### `steganography-lsb/` – Esteganografía con bits menos significativos
 
-Esta carpeta recoge una práctica centrada en **esteganografía basada en LSB (Least Significant Bit)** aplicada a imágenes digitales. El objetivo es explorar cómo ocultar y recuperar mensajes dentro de imágenes, ver el efecto que tiene sobre la calidad visual y entender las limitaciones de este enfoque.
+Esta carpeta recoge una práctica centrada en **esteganografía basada en LSB (Least Significant Bit)** aplicada a imágenes digitales. El proyecto implementa un sistema completo que combina cifrado AES-256-GCM con técnicas avanzadas de ocultación y análisis forense.
 
-En `steganography-lsb/` encontrarás principalmente:
-
-- Un cuaderno Jupyter (`LSB_Lab_Notebook.ipynb`) donde se explica paso a paso el método, se ilustran los conceptos básicos y se prueban distintos ejemplos de inserción y extracción de mensajes.
-- Un conjunto de imágenes de ejemplo en `dataset_images/`, usadas como imágenes portadoras (cover) para incrustar la información.
-- Una carpeta de pruebas `test/` con scripts en `scripts/` que automatizan el proceso de ocultar texto en imágenes, generar las imágenes estego y recuperar el mensaje oculto.
-- Una carpeta `test/stego-results/` con resultados de ejemplo: la imagen original, la imagen con información oculta, el mensaje recuperado y un pequeño informe sobre lo ocurrido en la prueba.
-- Un archivo `requirements.txt` con las dependencias de Python necesarias para ejecutar el notebook y los scripts.
-
-La práctica está planteada para ejecutarse en un entorno Python estándar. La forma habitual de trabajar consiste en crear un entorno virtual, instalar las dependencias y abrir el cuaderno o los scripts para ir experimentando con otras imágenes o mensajes.
-
+**Características principales:**
+- **Cifrado robusto:** AES-256-GCM con autenticación integrada
+- **Posiciones aleatorias:** Distribución no secuencial mediante PRNG determinista
+- **Análisis forense:** Implementación de RS Steganalysis, Chi-cuadrado e histogramas
+- **Optimización avanzada:** Algoritmo de búsqueda 13.59x más rápido que fuerza bruta
+- **Generación de datasets:** Sistema para crear 100 imágenes con mensaje oculto en una aleatoria
+- **Análisis de complejidad:** Evaluación teórica O(N×W×H) vs O(N) con pruebas empíricas
 ---
 
 ## Cómo trabajar con este repositorio

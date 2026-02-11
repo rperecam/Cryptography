@@ -425,9 +425,9 @@ correct_positions = _generate_position_pool_with_seed(
 ```
 
 **Resultado:**
-- ✅ Decodificación exitosa
-- ✅ Integridad 100%
-- ✅ Sin pérdida de seguridad
+- Decodificación exitosa
+- Integridad 100%
+- Sin pérdida de seguridad
 
 ### 5.4 Fase 4: Optimización y Limpieza
 
@@ -641,7 +641,7 @@ Payload corrupto: requiere 30173955608 bits, capacidad 1440000
 Estrategia híbrida con posiciones secuenciales para header+salt.
 
 **Resultado:**
-✅ Problema completamente resuelto
+ Problema completamente resuelto
 
 ### 7.2 Problema: Warnings de Overflow
 
@@ -662,7 +662,7 @@ cambio = abs(stego_lsb_ones - cover_lsb_ones)
 ```
 
 **Resultado:**
-✅ Sin warnings, código limpio
+ Sin warnings, código limpio
 
 ### 7.3 Problema: Rendimiento en Generación de Imágenes
 
@@ -917,23 +917,13 @@ max_safe_bytes = (capacity_bits * 0.4) // 8
 
 #### Objetivos Cumplidos
 
-✅ **Sistema funcional completo:** Codificación y decodificación operativas  
-✅ **Imperceptibilidad garantizada:** PSNR > 51 dB en todos los casos  
-✅ **Integridad perfecta:** 100% de mensajes recuperados correctamente  
-✅ **Cifrado robusto:** AES-256-GCM con autenticación  
-✅ **Documentación exhaustiva:** Manual de usuario, README, memoria técnica  
-✅ **Herramientas de análisis:** Informes detallados automáticos  
+ **Sistema funcional completo:** Codificación y decodificación operativas  
+ **Imperceptibilidad garantizada:** PSNR > 51 dB en todos los casos  
+ **Integridad perfecta:** 100% de mensajes recuperados correctamente  
+ **Cifrado robusto:** AES-256-GCM con autenticación  
+ **Documentación exhaustiva:** Manual de usuario, README, memoria técnica  
+ **Herramientas de análisis:** Informes detallados automáticos  
 
-#### Métricas Finales
-
-| Aspecto | Resultado | Estado |
-|---------|-----------|--------|
-| **Funcionalidad** | 100% operativa | ✅ Excelente |
-| **Calidad visual** | PSNR 51-80 dB | ✅ Imperceptible |
-| **Integridad** | 0% pérdida de datos | ✅ Perfecto |
-| **Rendimiento** | < 1s en 1080p | ✅ Óptimo |
-| **Seguridad** | AES-256 + Tag | ✅ Robusto |
-| **Usabilidad** | Interfaz CLI amigable | ✅ Funcional |
 
 ### 10.2 Lecciones Aprendidas
 
@@ -955,41 +945,7 @@ max_safe_bytes = (capacity_bits * 0.4) // 8
 
 3. **Documentación continua:** Documentar decisiones mientras se toman facilita el mantenimiento.
 
-### 10.3 Trabajo Futuro
 
-#### Mejoras Propuestas
-
-1. **Embedding Adaptativo**
-   - Modificar LSB solo en regiones con textura alta
-   - Preservar mejor las estadísticas originales
-   - **Impacto:** Mayor resistencia a estegoanálisis
-
-2. **Soporte Multi-bit**
-   - Permitir usar más de 1 bit por canal (2-3 bits)
-   - Ajuste dinámico según contenido de imagen
-   - **Impacto:** Mayor capacidad manteniendo calidad
-
-3. **Interfaz Gráfica (GUI)**
-   - Drag & drop de archivos
-   - Preview de imágenes
-   - Barra de progreso
-   - **Impacto:** Mayor usabilidad para usuarios no técnicos
-
-4. **Compresión Inteligente**
-   - Comprimir mensaje antes de cifrar
-   - Usar algoritmos modernos (Brotli, Zstandard)
-   - **Impacto:** Mensajes más grandes en la misma imagen
-
-5. **Modo Stealth Avanzado**
-   - Simular estadísticas de imagen natural
-   - Distribución LSB preservada artificialmente
-   - **Impacto:** Resistencia a detección estadística
-
-6. **Verificación de Contraseña**
-   - Pedir contraseña dos veces
-   - Validar fortaleza (entropía)
-   - Generar contraseñas aleatorias seguras
-   - **Impacto:** Menor riesgo de contraseñas débiles
 
 #### Extensiones del Sistema
 
@@ -1004,9 +960,14 @@ max_safe_bytes = (capacity_bits * 0.4) // 8
 3. **Análisis Forense Avanzado**
    - Herramientas de detección ML
    - Dataset de imágenes stego/clean
-   - Métricas de detectabilidad
+   - Métricas de detectabilidad automatizadas
 
-### 10.4 Conclusión Final
+4. **Benchmarking Suite**
+   - Comparación automática de métodos
+   - Gráficas de rendimiento
+   - Reportes de detectabilidad
+
+### 10.3 Conclusión Final
 
 Este proyecto ha demostrado la viabilidad de un sistema de esteganografía moderno que combina técnicas criptográficas robustas con ocultación imperceptible. El sistema desarrollado es:
 
@@ -1015,10 +976,19 @@ Este proyecto ha demostrado la viabilidad de un sistema de esteganografía moder
 - **Imperceptible:** PSNR > 51 dB garantiza invisibilidad visual
 - **Eficiente:** Procesa imágenes Full HD en menos de 1 segundo
 - **Documentado:** Manual completo y memoria técnica detallada
+- **Analizable:** Herramientas de estegoanálisis integradas (RS, Chi-cuadrado)
+- **Escalable:** Algoritmo optimizado O(N) para búsqueda en datasets masivos
 
 Las pruebas exhaustivas han validado el correcto funcionamiento del sistema, desde mensajes pequeños (147 bytes) hasta mensajes grandes que ocupan el 95% de la capacidad (171 KB). El análisis de seguridad identifica vulnerabilidades conocidas (detección estadística con alto uso) y proporciona recomendaciones para uso seguro.
 
-El proyecto cumple todos los objetivos planteados y proporciona una base sólida para futuras extensiones e investigaciones en el campo de la esteganografía digital.
+**Contribuciones Originales del Proyecto:**
+
+1. **Análisis forense dual:** Implementación tanto de herramientas de ocultación como de detección
+2. **Optimización algorítmica:** Reducción de complejidad de O(N×W×H) a O(N) con terminación temprana
+3. **Evaluación empírica:** Validación experimental con speedup real de 13.59x
+4. **Análisis de detectabilidad:** Cuantificación precisa de anomalías estadísticas (RS: 3.67%, χ²: +44%)
+
+El proyecto cumple todos los objetivos planteados y proporciona una base sólida para futuras extensiones e investigaciones en el campo de la esteganografía digital y el análisis forense.
 
 ---
 
@@ -1076,6 +1046,24 @@ El proyecto cumple todos los objetivos planteados y proporciona una base sólida
 12. **Boehm, B.** (2014)  
     *"StegExpose - A Tool for Detecting LSB Steganography"*  
     arXiv preprint arXiv:1410.6656
+
+13. **Fridrich, J., Goljan, M., & Du, R.** (2003)  
+    *"Detecting LSB Steganography in Color and Gray-Scale Images"*  
+    IEEE MultiMedia, 8(4), 22-28
+
+14. **Westfeld, A., & Pfitzmann, A.** (1999)  
+    *"Attacks on Steganographic Systems"*  
+    Information Hiding: Third International Workshop, 61-76
+
+### Análisis de Complejidad y Optimización
+
+15. **Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C.** (2009)  
+    *"Introduction to Algorithms"* (3rd ed.)  
+    MIT Press - Capítulos sobre análisis de complejidad
+
+16. **Amdahl, G. M.** (1967)  
+    *"Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities"*  
+    AFIPS Conference Proceedings, 483-485
 
 ---
 
@@ -1236,7 +1224,129 @@ print(mensaje.decode('utf-8'))
 - **Steganography:** Arte de ocultar información
 - **Tag:** Etiqueta de autenticación (GCM)
 
-### ANEXO G: Tabla de Resolución de Problemas
+### ANEXO G: Fórmulas de Análisis Forense
+
+#### Análisis RS (Regular-Singular)
+
+**Definiciones:**
+```
+Bloque de píxeles: B = [p₀, p₁, p₂, p₃]
+Rugosidad (Roughness): R(B) = |p₁-p₀| + |p₂-p₁| + |p₃-p₂|
+
+Máscara M (flip): M = [0, 1, 1, 0]
+Bloque modificado: B_M[i] = B[i] XOR M[i]
+
+Máscara -M (flip negativo): -M = [0, -1, -1, 0]
+Bloque modificado: B_-M[i] = (B[i] + (-M[i])) XOR M[i]
+```
+
+**Clasificación:**
+```
+Regular (R):   R(B_M) > R(B)
+Singular (S):  R(B_M) < R(B)
+Unusable (U):  R(B_M) = R(B)
+
+Rm = (# bloques regulares con máscara M) / total_bloques
+Sm = (# bloques singulares con máscara M) / total_bloques
+R_m = (# bloques regulares con máscara -M) / total_bloques
+S_m = (# bloques singulares con máscara -M) / total_bloques
+```
+
+**Detección:**
+```
+Diferencia = |Rm - Sm|
+
+Interpretación:
+- Diff < 2%:  Probablemente sin mensaje
+- 2% < Diff < 5%:  Sospechoso
+- Diff > 5%:  Alta probabilidad de mensaje oculto
+```
+
+#### Análisis Chi-Cuadrado
+
+**Fórmula:**
+```
+χ² = Σᵢ [(observado_i - esperado_i)² / esperado_i]
+
+Para LSB:
+observado = conteo de bits LSB=1
+esperado = total_pixels / 2 (distribución uniforme)
+```
+
+**Interpretación:**
+```
+χ² < 10:     Distribución natural
+10 < χ² < 50:    Ligeramente anómalo
+χ² > 50:     Alta probabilidad de manipulación
+```
+
+### ANEXO H: Tabla de Complejidad Comparativa
+
+| Algoritmo | Tiempo (N=100, 200×200) | Tiempo (N=100, 1000×1000) | Complejidad | Cuello de Botella |
+|-----------|-------------------------|---------------------------|-------------|-------------------|
+| **Fuerza Bruta** | 1.23 s | 221.37 s | O(N×W×H) | CPU + I/O |
+| **Optimizado** | 0.15 s | 16.28 s | O(N) | I/O |
+| **Paralelo (8 cores)** | 0.02 s* | 2.29 s* | O(N/P) | I/O compartido |
+
+*Estimaciones basadas en speedup teórico ajustado por I/O
+
+### ANEXO I: Tabla de Resolución de Problemas (Actualizada)
+
+| Problema | Causa | Solución |
+|----------|-------|----------|
+| "Archivo no encontrado" | secret_document.txt no existe | Crear archivo con mensaje |
+| "Contraseña vacía" | No se ingresó contraseña | Ingresar contraseña válida |
+| "Mensaje demasiado grande" | Mensaje excede capacidad | Usar imagen más grande o mensaje más corto |
+| "Contraseña incorrecta" | Password no coincide | Usar contraseña original |
+| "Payload corrupto" | Imagen modificada/corrupta | Usar imagen original sin modificar |
+| "Formato no soportado" | Imagen no es PNG | Convertir a PNG sin compresión |
+| Mensaje recuperado diferente | Imagen comprimida con JPEG | No modificar imagen, mantener PNG |
+| **Búsqueda muy lenta** | Usando fuerza bruta | Cambiar a algoritmo optimizado |
+| **Alta detección RS** | Capacidad >50% | Reducir mensaje a <40% capacidad |
+| **Anomalías Chi-cuadrado** | PRNG sesgado en un canal | Distribuir mejor bits entre canales RGB |
+
+### ANEXO J: Glosario Ampliado
+
+**Términos Generales:**
+- **AES-GCM:** Advanced Encryption Standard - Galois/Counter Mode
+- **AEAD:** Authenticated Encryption with Associated Data
+- **Cover Image:** Imagen original sin mensaje oculto
+- **Ciphertext:** Texto cifrado
+- **KDF:** Key Derivation Function
+- **LSB:** Least Significant Bit (bit menos significativo)
+- **MSE:** Mean Squared Error
+- **Nonce:** Number used Once (número único)
+- **Payload:** Carga útil (mensaje + metadatos)
+- **PBKDF2:** Password-Based Key Derivation Function 2
+- **PRNG:** Pseudo-Random Number Generator
+- **PSNR:** Peak Signal-to-Noise Ratio
+- **Salt:** Valor aleatorio para KDF
+- **Stego Image:** Imagen con mensaje oculto
+- **Steganography:** Arte de ocultar información
+- **Tag:** Etiqueta de autenticación (GCM)
+
+**Términos de Análisis Forense:**
+- **RS Analysis:** Regular-Singular Steganalysis
+- **Chi-Square (χ²):** Prueba estadística de bondad de ajuste
+- **Histogram Analysis:** Análisis de distribución de valores de píxeles
+- **Early Termination:** Técnica de optimización para detener procesamiento temprano
+- **False Positive:** Detección incorrecta de mensaje donde no existe
+- **False Negative:** No detectar mensaje que sí existe
+- **Rugosidad (Roughness):** Medida de variación entre píxeles adyacentes
+- **Embedding Rate:** Porcentaje de capacidad utilizada
+
+**Términos de Complejidad:**
+- **Big-O Notation:** Notación para describir complejidad asintótica
+- **Cuello de Botella:** Componente que limita el rendimiento global
+- **I/O Bound:** Limitado por velocidad de entrada/salida
+- **CPU Bound:** Limitado por velocidad de procesamiento
+- **Speedup:** Factor de mejora en tiempo de ejecución
+- **Paralelización:** Dividir trabajo entre múltiples procesadores
+- **Ley de Amdahl:** Límite teórico de speedup con paralelización
+
+---
+
+### ANEXO K: Tabla de Resolución de Problemas
 
 | Problema | Causa | Solución |
 |----------|-------|----------|
@@ -1253,12 +1363,12 @@ print(mensaje.decode('utf-8'))
 ## INFORMACIÓN DEL DOCUMENTO
 
 **Título:** Memoria Técnica del Proyecto - Sistema de Esteganografía LSB con Cifrado AES-GCM  
-**Versión:** 1.0  
+**Versión:** 2.0  
 **Fecha de creación:** 09 de Febrero de 2026  
-**Última actualización:** 09 de Febrero de 2026  
-**Autor:** Equipo de Desarrollo - Laboratorio de Criptografía  
-**Páginas:** 50+  
-**Palabras:** ~15,000
+**Última actualización:** 11 de Febrero de 2026  
+**Autor:** Rodrigo Perez Campesino - Laboratorio de Criptografía (UAX)  
+**Páginas:** 70+  
+**Palabras:** ~20,000
 
 ---
 
