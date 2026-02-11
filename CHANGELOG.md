@@ -106,11 +106,12 @@ Speedup real: 13.59x (limitado por I/O)
 ```
 
 ### Versión
-- **Número de versión**: 1.0 → 2.0
-- **Páginas de documentación**: 50+ → 70+
-- **Palabras en README**: ~15,000 → ~20,000
-- **Secciones principales**: 12 → 14
-- **Anexos**: 7 → 11
+- **Número de versión**: 1.0 → 2.0 → 2.1
+- **Páginas de documentación**: 50+ → 70+ → 75+
+- **Palabras en README**: ~15,000 → ~20,000 → ~22,000
+- **Secciones principales**: 12 → 14 → 14
+- **Anexos**: 7 → 11 → 12
+- **Imágenes documentadas**: 0 → 0 → 5
 
 ---
 

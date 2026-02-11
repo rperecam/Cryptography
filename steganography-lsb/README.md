@@ -618,6 +618,94 @@ assert original == recuperado  # ✓ PASS
 
 **Conclusión:** Rendimiento excelente, escalable con tamaño de imagen.
 
+### 6.4 Galería de Resultados Visuales
+
+El sistema genera automáticamente evidencias visuales de los resultados en el directorio `test/stego-results/`:
+
+#### Imágenes Generadas
+
+![Imagen Cover Original](test/stego-results/cover_image.png)
+
+1. **`cover_image.png`** - Imagen Cover Original
+   - Imagen generada con patrón de ruido controlado (800×600 píxeles)
+   - Textura creada mediante funciones seno/coseno con ruido
+   - Capacidad total: 180,000 bytes (1,440,000 bits)
+   - Sirve como contenedor para el mensaje oculto
+
+![Imagen Stego con Mensaje Oculto](test/stego-results/stego_image.png)
+
+2. **`stego_image.png`** - Imagen Stego (Con Mensaje Oculto)
+   - Imagen resultante después de la ocultación LSB
+   - Contiene mensaje cifrado distribuido en posiciones aleatorias
+   - Visualmente idéntica a la imagen cover (PSNR > 51 dB)
+   - Formato: PNG sin compresión para preservar LSB
+
+![Mapa de Diferencias Visuales](test/stego-results/visual_diff.png)
+
+3. **`visual_diff.png`** - Mapa de Diferencias Visuales
+   - Visualización amplificada de las diferencias píxel a píxel
+   - Píxeles modificados resaltados en escala de grises
+   - Demuestra la distribución espacial de los cambios LSB
+   - Útil para análisis forense y verificación de aleatoriedad
+
+#### Archivos de Datos
+
+4. **`recovered-message.txt`** - Mensaje Recuperado
+   - Mensaje extraído y descifrado de la imagen stego
+   - Debe ser idéntico byte a byte al mensaje original
+   - Tamaño: Variable según el mensaje oculto
+   - Prueba de integridad: 100% en todas las pruebas
+
+5. **`report.txt`** - Informe Completo de Análisis
+   - Resumen de todas las métricas y estadísticas
+   - Análisis visual: MSE, PSNR, diferencias máx/min/promedio
+   - Análisis estadístico: Distribución LSB por canal RGB
+   - Análisis de capacidad: Uso porcentual, overhead, espacio libre
+   - Timestamp y parámetros de configuración utilizados
+
+#### Ejemplo de Estructura de Resultados
+
+```
+test/stego-results/
+├── cover_image.png          #  Imagen original (800×600)
+├── stego_image.png          #  Imagen con mensaje oculto
+├── visual_diff.png          #  Mapa de diferencias (amplificado 50x)
+├── recovered-message.txt    #  Mensaje recuperado (166,921 bytes)
+└── report.txt               #  Informe completo (métricas detalladas)
+```
+
+#### Interpretación Visual
+
+**Análisis de la Imagen de Diferencias (`visual_diff.png`):**
+- **Píxeles negros:** Sin modificación (LSB no cambió)
+- **Píxeles grises claros:** Cambio de ±1 en valor RGB
+- **Distribución uniforme:** Indica posiciones aleatorias efectivas
+- **Concentración en áreas específicas:** Posible sesgo del PRNG
+
+**Comparación Cover vs Stego:**
+Las imágenes `cover_image.png` y `stego_image.png` son visualmente indistinguibles al ojo humano. Para verificar esto:
+1. Abrir ambas imágenes lado a lado
+2. Observar que no hay diferencias perceptibles
+3. Usar herramientas de comparación (ImageMagick, Photoshop diff)
+4. PSNR > 51 dB confirma imperceptibilidad
+
+#### Reproducción de Resultados
+
+Para generar estas imágenes ejecuta:
+
+```bash
+cd test
+python scripts/demo.py
+```
+
+Los archivos se generarán automáticamente en `stego-results/` con:
+- Timestamp del procesamiento
+- Métricas de calidad (PSNR, MSE)
+- Análisis estadístico completo
+- Verificación de integridad
+
+**Nota:** Las imágenes actuales en el repositorio corresponden a una prueba con mensaje de 171 KB (95.49% de capacidad utilizada).
+
 ---
 
 ## 7. PROBLEMAS ENCONTRADOS Y SOLUCIONES
@@ -1290,6 +1378,145 @@ esperado = total_pixels / 2 (distribución uniforme)
 
 *Estimaciones basadas en speedup teórico ajustado por I/O
 
+### ANEXO H.5: Catálogo de Imágenes de Resultados
+
+Este anexo documenta las imágenes de ejemplo generadas automáticamente por el sistema en `test/stego-results/`.
+
+#### Imagen 1: `cover_image.png`
+**Tipo:** Imagen Cover (Portadora)  
+**Resolución:** 800×600 píxeles (480,000 píxeles totales)  
+**Formato:** PNG (sin compresión)  
+**Características:**
+- Generada mediante funciones matemáticas (seno/coseno + ruido)
+- Textura controlada para análisis consistente
+- Capacidad teórica: 180,000 bytes (1,440,000 bits)
+- Distribución RGB equilibrada
+- Sin artefactos de compresión
+
+**Uso:** Contenedor base para ocultar mensajes cifrados
+
+#### Imagen 2: `stego_image.png`
+**Tipo:** Imagen Stego (Con Mensaje Oculto)  
+**Resolución:** 800×600 píxeles  
+**Formato:** PNG (sin compresión)  
+**Contenido oculto:**
+- Mensaje original: 166,921 bytes (secret_document_ex.txt)
+- Mensaje cifrado: 166,973 bytes (después de AES-GCM)
+- Bits totales usados: 1,335,784 (92.76% de capacidad)
+- Posiciones: Aleatorias (PRNG seed derivado de password)
+
+**Métricas de calidad:**
+- PSNR: 51.34 dB (imperceptible)
+- MSE: 0.477348
+- Diferencia máxima: ±1 valor RGB
+- Diferencia promedio: 0.477348
+
+**Uso:** Imagen final para transmisión/almacenamiento seguro
+
+#### Imagen 3: `visual_diff.png`
+**Tipo:** Mapa de Diferencias Visuales  
+**Resolución:** 800×600 píxeles  
+**Formato:** PNG (escala de grises)  
+**Generación:**
+```python
+diff = np.abs(stego.astype(int) - cover.astype(int))
+diff_amplified = np.clip(diff * 50, 0, 255)  # Amplificación 50x
+```
+
+**Interpretación de colores:**
+- **Negro (0):** Sin cambio en el píxel
+- **Gris muy oscuro (50):** Cambio de ±1 en un canal
+- **Gris oscuro (100):** Cambio en dos canales
+- **Gris medio (150):** Cambio en tres canales (RGB)
+
+**Análisis visual:**
+- Distribución aproximadamente uniforme → Buena aleatoriedad PRNG
+- Concentraciones locales → Posible sesgo del generador
+- Patrón secuencial → Fallo en distribución aleatoria (no observado)
+
+**Estadísticas del mapa:**
+- Píxeles modificados: 687,381 (47.73% del total)
+- Píxeles sin cambio: 752,619 (52.27%)
+- Cambio promedio (amplificado): 23.86
+
+**Uso:** Análisis forense y verificación de distribución espacial
+
+#### Archivo 4: `recovered-message.txt`
+**Tipo:** Archivo de texto plano  
+**Tamaño:** 166,921 bytes  
+**Codificación:** UTF-8  
+**Contenido:** Mensaje completo extraído y descifrado  
+**Integridad:**  Verificado byte a byte con original
+
+**Verificación:**
+```bash
+# Windows PowerShell
+fc.exe /b secret_document_ex.txt recovered-message.txt
+# Resultado: Sin diferencias
+
+# Linux/Mac
+diff secret_document_ex.txt recovered-message.txt
+# Resultado: Sin output (archivos idénticos)
+```
+
+**Uso:** Validación de integridad del sistema
+
+#### Archivo 5: `report.txt`
+**Tipo:** Informe de texto plano  
+**Tamaño:** ~1.4 KB  
+**Secciones:**
+
+1. **ANÁLISIS VISUAL**
+   - Diferencia máxima entre píxeles
+   - Diferencia promedio
+   - Número de píxeles modificados
+   - Porcentaje de píxeles afectados
+
+2. **ANÁLISIS ESTADÍSTICO**
+   - MSE (Mean Squared Error)
+   - PSNR (Peak Signal-to-Noise Ratio)
+   - Distribución LSB por canal (R, G, B)
+   - Cambios en proporción de bits LSB=1
+
+3. **ANÁLISIS DE CAPACIDAD**
+   - Capacidad total de la imagen (bits/bytes)
+   - Bits utilizados por el mensaje
+   - Porcentaje de uso de capacidad
+   - Overhead del cifrado (52 bytes)
+   - Espacio libre restante
+
+4. **METADATA**
+   - Timestamp de generación
+   - Tamaño de imagen (width × height)
+   - Tamaño de mensaje original y cifrado
+   - Configuración de cifrado (AES-256-GCM, PBKDF2)
+
+**Ejemplo de contenido:**
+```
+=== ANÁLISIS VISUAL ===
+Diferencia máxima: 1
+Diferencia promedio: 0.477348
+Píxeles modificados: 687381 de 1440000 (47.73%)
+
+=== ANÁLISIS ESTADÍSTICO ===
+MSE: 0.477348
+PSNR: 51.34 dB
+
+Distribución LSB por canal:
+- Rojo:  50.00% -> 49.96% (cambio: -175 píxeles)
+- Verde: 25.00% -> 48.84% (cambio: +114435 píxeles)
+- Azul:  50.17% -> 49.91% (cambio: -1235 píxeles)
+
+=== ANÁLISIS DE CAPACIDAD ===
+Capacidad total: 180000 bytes (1440000 bits)
+Bits utilizados: 1335784 (92.76%)
+Overhead cifrado: 52 bytes
+Espacio libre: 13084 bytes
+```
+
+**Uso:** Documentación automática de cada experimento
+**Nota sobre versionado:** Los archivos en `stego-results/` se sobrescriben en cada ejecución de `demo.py`. Para preservar resultados de experimentos específicos, hacer copias con nombres descriptivos (ej: `stego_95percent_capacity.png`).
+
 ### ANEXO I: Tabla de Resolución de Problemas (Actualizada)
 
 | Problema | Causa | Solución |
@@ -1363,12 +1590,13 @@ esperado = total_pixels / 2 (distribución uniforme)
 ## INFORMACIÓN DEL DOCUMENTO
 
 **Título:** Memoria Técnica del Proyecto - Sistema de Esteganografía LSB con Cifrado AES-GCM  
-**Versión:** 2.0  
+**Versión:** 2.1  
 **Fecha de creación:** 09 de Febrero de 2026  
-**Última actualización:** 11 de Febrero de 2026  
+**Última actualización:** 11 de Febrero de 2026 (tarde)  
 **Autor:** Rodrigo Perez Campesino - Laboratorio de Criptografía (UAX)  
-**Páginas:** 70+  
-**Palabras:** ~20,000
+**Páginas:** 75+  
+**Palabras:** ~22,000  
+**Imágenes documentadas:** 5 (cover, stego, diff, recovered, report)
 
 ---
 
