@@ -5,6 +5,7 @@ env/
 
 # --- Ignorar configuraciones del IDE (DataSpell) ---
 .idea/
+.gitignore
 
 # --- Ignorar carpetas de datos y resultados ---
 steganography-lsb/scripts/stego-results
