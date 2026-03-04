@@ -1,0 +1,13 @@
+# Dependencias del proyecto pollard_rho
+# Notebook: pollard_rho_challenge.ipynb
+# Python >= 3.10
+#
+# Stdlib usada (no requiere instalación):
+#   random, itertools, statistics, math, json, os
+
+sympy>=1.14.0
+matplotlib>=3.10.8
+numpy>=2.4.2
+seaborn>=0.13.2
+pandas>=3.0.1
+

@@ -624,7 +624,7 @@ El sistema genera automáticamente evidencias visuales de los resultados en el d
 
 #### Imágenes Generadas
 
-![Imagen Cover Original](test/stego-results/cover_image.png)
+![Imagen Cover Original](src/stego-results/cover_image.png)
 
 1. **`cover_image.png`** - Imagen Cover Original
    - Imagen generada con patrón de ruido controlado (800×600 píxeles)
@@ -632,7 +632,7 @@ El sistema genera automáticamente evidencias visuales de los resultados en el d
    - Capacidad total: 180,000 bytes (1,440,000 bits)
    - Sirve como contenedor para el mensaje oculto
 
-![Imagen Stego con Mensaje Oculto](test/stego-results/stego_image.png)
+![Imagen Stego con Mensaje Oculto](src/stego-results/stego_image.png)
 
 2. **`stego_image.png`** - Imagen Stego (Con Mensaje Oculto)
    - Imagen resultante después de la ocultación LSB
@@ -640,7 +640,7 @@ El sistema genera automáticamente evidencias visuales de los resultados en el d
    - Visualmente idéntica a la imagen cover (PSNR > 51 dB)
    - Formato: PNG sin compresión para preservar LSB
 
-![Mapa de Diferencias Visuales](test/stego-results/visual_diff.png)
+![Mapa de Diferencias Visuales](src/stego-results/visual_diff.png)
 
 3. **`visual_diff.png`** - Mapa de Diferencias Visuales
    - Visualización amplificada de las diferencias píxel a píxel
@@ -694,7 +694,7 @@ Las imágenes `cover_image.png` y `stego_image.png` son visualmente indistinguib
 Para generar estas imágenes ejecuta:
 
 ```bash
-cd test
+cd src
 python scripts/demo.py
 ```
 

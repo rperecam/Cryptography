@@ -21,6 +21,8 @@ Esta carpeta recoge una práctica centrada en **esteganografía basada en LSB (L
 - **Optimización avanzada:** Algoritmo de búsqueda 13.59x más rápido que fuerza bruta
 - **Generación de datasets:** Sistema para crear 100 imágenes con mensaje oculto en una aleatoria
 - **Análisis de complejidad:** Evaluación teórica O(N×W×H) vs O(N) con pruebas empíricas
+
+> Ver [steganography-lsb/README.md](steganography-lsb/README.md) para la memoria técnica completa con código, análisis y visualizaciones.
 ### `pollard_rho/` – Optimización Heurística del Algoritmo Pollard Rho
 
 Esta carpeta recoge un experimento de **optimización del algoritmo Pollard Rho** aplicado al Problema del Logaritmo Discreto (DLP). El objetivo fue superar empíricamente al algoritmo clásico (partición mod 3 con elevación al cuadrado) diseñando una función de iteración alternativa basada en **caminatas multiplicativas de Teske** y un **selector de rama por desplazamiento de bits**.

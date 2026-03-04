@@ -1,0 +1,12 @@
+# Dependencias del proyecto steganography-lsb
+# Notebook: LSB_Lab_Notebook.ipynb
+# Python >= 3.10
+#
+# Stdlib usada (no requiere instalación):
+#   os, random, hashlib, shutil, time
+
+numpy>=2.4.2
+Pillow>=12.1.0
+cryptography>=46.0.4
+matplotlib>=3.10.8
+
