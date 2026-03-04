@@ -7,6 +7,64 @@ y este proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 
 ---
 
+## [3.0] - 2026-03-04
+
+### Añadido
+
+#### Nuevo Módulo: Optimización Heurística de Pollard Rho (`pollard_rho/`)
+- **Notebook Jupyter** `pollard_rho_challenge.ipynb`: implementación completa del experimento de optimización
+  - Grid Search sobre 40 configuraciones únicas (5 valores de K × 4 métodos de entropía × 2 estrategias)
+  - Evaluación en 5 tamaños de primo: 10, 14, 18, 22 y 24 bits
+  - Algoritmo de Floyd (tortuga y liebre) como detector de ciclos
+  - Algoritmo clásico (mod 3 + elevación al cuadrado) como referencia comparativa
+- **Caminatas de Teske Aleatorias**: sustitución de la elevación al cuadrado por multiplicadores precalculados $M_i \equiv g^{c_i} \cdot h^{d_i} \pmod{p}$
+- **Selector de Entropía por Desplazamiento de Bits**: extracción de bits intermedios (`shift_4`) para elegir la rama de iteración con mayor dispersión geométrica
+- **Métrica de Score Normalizada**: ratio pasos/√N que pondera por igual todos los tamaños de primo evaluados
+
+#### Documentación Técnica `pollard_rho/README.md`
+- **Sección 7**: Extractos clave del código extraídos directamente del notebook
+  - §7.1 Generación de parámetros DLP (`generar_parametros_dlp`)
+  - §7.2 Preparación de multiplicadores Teske (`preparar_multiplicadores`)
+  - §7.3 Función de paso optimizada con selector de entropía (`step_optimizado`)
+  - §7.4 Algoritmo clásico de referencia (`pollard_rho_classico_steps`)
+  - §7.5 Espacio de búsqueda Grid Search (`ESPACIO_BUSQUEDA`)
+- **Sección 8**: Galería completa de resultados visuales (8 gráficas)
+  - §8.1 Comparación directa de pasos (clásico vs mejor configuración)
+  - §8.2 Ratio de pasos mejor configuración / clásico
+  - §8.3 Mejoras porcentuales por tamaño de primo
+  - §8.4 Distribución de scores de las 40 configuraciones
+  - §8.5 Scores por método de entropía (boxplot)
+  - §8.6 Scores por estrategia iterativa (boxplot)
+  - §8.7 Heatmap K × método de entropía
+  - §8.8 Comparación de las 5 mejores configuraciones
+
+### Resultados Clave
+
+**Configuración ganadora:**
+```
+K = 8 particiones
+Entropía: shift_4  (x >> 4) % K
+Estrategia: teske_aleatorio
+Score: 0.4019  (pasos / √N)
+```
+
+**Mejoras sobre el algoritmo clásico:**
+```
+10 bits:  390  → 14  pasos  (96.4% de mejora)
+14 bits:  1830 → 51  pasos  (97.2% de mejora)
+18 bits:  6390 → 256 pasos  (96.0% de mejora)
+22 bits: 29265 → 560 pasos  (98.1% de mejora)
+24 bits: 60030 → 1638 pasos (97.3% de mejora)
+```
+
+### Información Técnica
+- **Módulos añadidos**: `pollard_rho/`
+- **Archivos de imagen generados**: 8 (`img/*.png`)
+- **Configuraciones evaluadas**: 40
+- **Reducción media de pasos**: > 96 % en todos los espectros
+
+---
+
 ## [2.0] - 2026-02-11
 
 ### Añadido

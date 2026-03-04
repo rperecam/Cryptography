@@ -21,6 +21,19 @@ Esta carpeta recoge una práctica centrada en **esteganografía basada en LSB (L
 - **Optimización avanzada:** Algoritmo de búsqueda 13.59x más rápido que fuerza bruta
 - **Generación de datasets:** Sistema para crear 100 imágenes con mensaje oculto en una aleatoria
 - **Análisis de complejidad:** Evaluación teórica O(N×W×H) vs O(N) con pruebas empíricas
+### `pollard_rho/` – Optimización Heurística del Algoritmo Pollard Rho
+
+Esta carpeta recoge un experimento de **optimización del algoritmo Pollard Rho** aplicado al Problema del Logaritmo Discreto (DLP). El objetivo fue superar empíricamente al algoritmo clásico (partición mod 3 con elevación al cuadrado) diseñando una función de iteración alternativa basada en **caminatas multiplicativas de Teske** y un **selector de rama por desplazamiento de bits**.
+
+**Puntos clave:**
+- **Grid Search** sobre 40 configuraciones: 5 valores de K × 4 métodos de entropía × 2 estrategias de iteración
+- **Métrica:** ratio pasos/√N promediado en primos de 10 a 24 bits
+- **Configuración ganadora:** K=8 particiones, `shift_4` como selector de entropía, caminatas aleatorias de Teske
+- **Resultado:** reducción de pasos superior al **96 % en todos los espectros** frente al algoritmo clásico
+- **Invariante verificado:** $x_k \equiv g^{a_k} \cdot h^{b_k} \pmod{p}$ se mantiene tras cada paso multiplicativo
+
+> Ver [pollard_rho/README.md](pollard_rho/README.md) para la memoria técnica completa con código, análisis y visualizaciones.
+
 ---
 
 ## Cómo trabajar con este repositorio
