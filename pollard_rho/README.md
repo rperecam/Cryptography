@@ -1,15 +1,8 @@
----
-title: "Memoria Técnica: Optimización Heurística del Algoritmo Pollard Rho"
-subtitle: "Proyecto: Criptografía - Universidad Alfonso X el Sabio"
-author: "Rodrigo Campesino / Equipo"
-date: "4 de Marzo, 2026"
-toc: true
-toc-title: "Índice de Contenidos"
-numbersections: false
-geometry: "margin=2.5cm"
-lang: "es-ES"
-colorlinks: true
----
+# Memoria Técnica: Optimización Heurística del Algoritmo Pollard Rho
+## Proyecto: Criptografía - Universidad Alfonso X el Sabio
+author: Rodrigo Campesino / Equipo
+4 de Marzo, 2026
+
 
 > **Resumen ejecutivo —** Aplicando un Grid Search de 40 configuraciones, logramos reducir el número de pasos del algoritmo Pollard Rho en **más de un 96 %** frente a la variante clásica, utilizando K=8 particiones multiplicativas de Teske y un selector de entropía por desplazamiento de 4 bits (`shift_4`). Este documento recoge la cronología completa del proyecto, las decisiones de diseño tomadas, la justificación teórica y los resultados empíricos obtenidos.
 
